@@ -9,15 +9,15 @@ ENV COMPOSER_NO_INTERACTION 1
 RUN apt-get update -y \
  && apt-get install -y python-software-properties \
  && add-apt-repository -y ppa:ondrej/php \
- curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+ && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install --no-install-recommends -y \
- curl \
- nodejs \
- build-essential \
- ca-certificates \
- openssh-client \
- php7.1-cli \
- nodejs \
+  curl \
+  nodejs \
+  build-essential \
+  ca-certificates \
+  openssh-client \
+  php7.1-cli \
+  nodejs \
  # Slim down image
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_* \
