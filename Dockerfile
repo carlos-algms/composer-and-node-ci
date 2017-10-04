@@ -1,24 +1,22 @@
-FROM debian:8.9
-MAINTAINER David Sferruzza <david.sferruzza@gmail.com>
+FROM ubuntu:16.04
+MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 
 # Let the conatiner know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
 ENV COMPOSER_NO_INTERACTION 1
 
 # Add Node.js repo
-RUN \
+RUN apt-get update -y \
+ && apt-get install -y python-software-properties \
+ && add-apt-repository -y ppa:ondrej/php \
  curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install --no-install-recommends -y \
  curl \
  nodejs \
  build-essential \
- apt-transport-https \
  ca-certificates \
- gnupg2 \
  openssh-client \
- bzip2 \
- git \
- php5-cli \
+ php7.1-cli \
  nodejs \
  # Slim down image
  && apt-get clean \
