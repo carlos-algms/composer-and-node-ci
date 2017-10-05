@@ -5,6 +5,7 @@ MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install --no-install-recommends -y \  
   nodejs \
+  unzip \
   build-essential \
   openssh-client \
   
