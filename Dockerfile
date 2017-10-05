@@ -8,6 +8,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   unzip \
   build-essential \
   openssh-client \
+  rsync \
+  git \
   
  # Slim down image
  && apt-get clean \
