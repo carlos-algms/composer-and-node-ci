@@ -1,22 +1,12 @@
-FROM ubuntu:16.04
+FROM php:7.1.1
 MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 
-# Let the conatiner know that there is no tty
-ENV DEBIAN_FRONTEND noninteractive
-ENV COMPOSER_NO_INTERACTION 1
-
 # Add Node.js repo
-RUN apt-get update -y \
- && apt-get install -y python-software-properties \
- && add-apt-repository -y ppa:ondrej/php \
- && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
- && apt-get install --no-install-recommends -y \
-  curl \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+ && apt-get install --no-install-recommends -y \  
   nodejs \
   build-essential \
-  ca-certificates \
   openssh-client \
-  php7.1-cli \
   nodejs \
  # Slim down image
  && apt-get clean \
@@ -26,4 +16,3 @@ RUN apt-get update -y \
  # Install composer
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
  && composer selfupdate
- 
