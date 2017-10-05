@@ -1,4 +1,4 @@
-FROM php:7.1.1
+FROM php:7.1
 MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 
 # Add Node.js repo
@@ -7,12 +7,14 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   nodejs \
   build-essential \
   openssh-client \
-  nodejs \
+  
  # Slim down image
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_* \
  # Show versions
- && php -v && node -v && npm -v \
+ && php -v \
+ && echo "node: `node -v` \
+ && echo npm: `npm -v` \
  # Install composer
- && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
- && composer selfupdate
+ && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ 
