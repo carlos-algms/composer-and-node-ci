@@ -13,8 +13,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_* \
  # Show versions
  && php -v \
- && echo "node: `node -v` \
- && echo npm: `npm -v` \
+ && echo "node: `node -v` " \
+ && echo "npm: `npm -v`" \
  # Install composer
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
  
