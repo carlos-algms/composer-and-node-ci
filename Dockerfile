@@ -16,7 +16,6 @@ RUN \
   rsync \
   git \
   yarn \
-  php7.1-zip \
   
   
  # Slim down image
