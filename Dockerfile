@@ -15,6 +15,7 @@ RUN \
   git \
   yarn \
   php7.1-zip \
+  apt-transport-https \
   
   
  # Slim down image
