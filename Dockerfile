@@ -2,7 +2,10 @@ FROM php:7.1
 MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 
 # Add Node.js repo
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN \
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
+curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install --no-install-recommends -y \  
   nodejs \
   unzip \
@@ -10,6 +13,9 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   openssh-client \
   rsync \
   git \
+  yarn \
+  php7.1-zip \
+  
   
  # Slim down image
  && apt-get clean \
