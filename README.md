@@ -13,3 +13,4 @@ It was made to use with Laravel and/or Frontend projects since it has all that i
 * openssh client
 * git
 * rsync
+* MySql Client
