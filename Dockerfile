@@ -16,6 +16,7 @@ RUN apt-get update \
       rsync \
       git \
       yarn \
+      mysql-client \
   # Slim down image
   && apt-get clean \
   && rm -rf \
