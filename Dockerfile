@@ -12,6 +12,16 @@ RUN apt-get update \
       rsync \
       git \
       default-mysql-client \
+      aspell \
+      gettext-base \
+      libfreetype6-dev \
+      libjpeg62-turbo-dev \
+      libmagickwand-dev \
+      libmcrypt-dev \
+      libpng-dev \
+      libpspell-dev \
+      libxml2-dev \
+      libzip-dev \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
