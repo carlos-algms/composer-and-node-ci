@@ -3,6 +3,7 @@ FROM $FROM_IMAGE
 MAINTAINER Carlos A. Gomes <carlos.algms@gmail.com>
 
 RUN apt-get update \
+  && apt-get upgrade -y \
   && apt-get install --no-install-recommends --no-install-suggests -y \
       gnupg2 \
       apt-transport-https \
