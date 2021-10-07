@@ -22,6 +22,7 @@ RUN apt-get update \
       libpspell-dev \
       libxml2-dev \
       libzip-dev \
+      ca-certificates \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
