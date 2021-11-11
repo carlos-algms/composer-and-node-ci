@@ -45,6 +45,7 @@ jobs:
           push: true
           build-args: |
             FROM_IMAGE=php:7.1-cli-alpine
+            DEPLOYER_VERSION="v6.6.0"
             PECL_EXT=""
             ENABLE_EXT=""
             PHP_EXT=mysqli pspell zip mcrypt

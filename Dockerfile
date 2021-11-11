@@ -3,6 +3,8 @@ FROM $FROM_IMAGE
 
 LABEL maintainer="Carlos A. Gomes <carlos.algms@gmail.com>"
 
+ARG DEPLOYER_VERSION="v6.8.0"
+
 RUN apk add --no-cache \
     zsh \
     vim \
@@ -18,7 +20,7 @@ RUN apk add --no-cache \
     yarn \
     composer \
     make \
-&& curl -L https://deployer.org/releases/v6.8.0/deployer.phar --output /usr/local/bin/dep \
+&& curl -L https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar --output /usr/local/bin/dep \
 && chmod +x /usr/local/bin/dep
 
 ARG PECL_EXT="mcrypt-1.0.4"
