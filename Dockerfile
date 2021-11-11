@@ -6,6 +6,7 @@ LABEL maintainer="Carlos A. Gomes <carlos.algms@gmail.com>"
 ARG DEPLOYER_VERSION="v6.8.0"
 
 RUN apk add --no-cache \
+    util-linux \
     zsh \
     vim \
     ca-certificates \
