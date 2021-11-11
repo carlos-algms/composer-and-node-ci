@@ -12,7 +12,7 @@ To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync a
 
 ## This image includes: 
 
-* [NodeJS 14.x and NPM](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
+* [NodeJS 16.x and NPM](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
 * [yarn - latest](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
 * PHP 8-cli, 7.1-cli
 * [Composer - latest](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md)

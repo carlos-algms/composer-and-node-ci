@@ -3,7 +3,6 @@ FROM $FROM_IMAGE
 
 LABEL maintainer="Carlos A. Gomes <carlos.algms@gmail.com>"
 
-ARG DEPLOYER_VERSION="v6.8.0"
 
 RUN apk add --no-cache \
     util-linux \
@@ -16,13 +15,8 @@ RUN apk add --no-cache \
     rsync \
     git \
     mysql-client \
-    nodejs \
-    npm \
-    yarn \
     composer \
-    make \
-&& curl -L https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar --output /usr/local/bin/dep \
-&& chmod +x /usr/local/bin/dep
+    make
 
 ARG PECL_EXT="mcrypt-1.0.4"
 ARG PHP_EXT="mysqli pspell zip"
@@ -44,3 +38,19 @@ if [ ! -z "$PECL_EXT" ]; then \
 fi; \
 docker-php-ext-install -j "$(nproc)" $PHP_EXT; \
 apk del .build-deps
+
+
+ARG DEPLOYER_VERSION="v6.8.0"
+RUN curl -L https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar --output /usr/local/bin/dep \
+    && chmod +x /usr/local/bin/dep
+
+
+# Install node, npm and yarn
+ARG NODE_VERSION="v16.13.0"
+RUN curl -O https://unofficial-builds.nodejs.org/download/release/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64-musl.tar.xz \
+    && tar xJf node-v*.xz -C /usr --strip-components=1 --no-same-owner \
+    && rm node-v*.xz \
+    && npm i -g yarn
+
+
+COPY zshrc /root/.zshrc
