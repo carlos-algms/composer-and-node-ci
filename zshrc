@@ -1,9 +1,8 @@
 PROMPT=$'\n'"%B%F{green}%n%f %F{blue}%~%f%b"$'\n'"λ "
 
-export LS_OPTIONS='--color=auto -F --group-directories-first'
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -l'
-alias l='ls $LS_OPTIONS -lA'
+alias ls='/bin/ls --color=auto -F --group-directories-first'
+alias ll='ls -l'
+alias l='ls -lA'
 
 extract () {
     if [ -f $1 ] ; then
