@@ -4,6 +4,11 @@ build_8:
 		-t carlosalgms/composer-and-node-ci:latest \
 		-t carlosalgms/composer-and-node-ci:php8
 
+build_7:
+	docker build . --rm \
+		--build-arg=FROM_IMAGE="php:7-cli-alpine" \
+		-t carlosalgms/composer-and-node-ci:php7
+
 build_71:
 	docker build . --rm \
 		-t carlosalgms/composer-and-node-ci:php7.1 \
