@@ -69,7 +69,7 @@ jobs:
           build-args: |
             FROM_IMAGE=php:7.1-cli
             DEPLOYER_VERSION="v6.6.0"
-            PECL_EXT=""
-            ENABLE_EXT=""
+            PECL_EXT=
+            ENABLE_EXT=
             PHP_EXT=mysqli pspell zip mcrypt
           tags: carlosalgms/composer-and-node-ci:php7.1
