@@ -18,6 +18,7 @@ RUN apt-get update \
         git \
         default-mysql-client \
         make \
+    && apt-get autoremove -y --purge \
     && apt-get autoclean \
     && apt-get clean \
     && rm -rf /var/cache/debconf/*-old \
@@ -49,14 +50,14 @@ RUN apt-get update \
         ) \
     ) \
     && docker-php-ext-install -j "$(nproc)" $PHP_EXT \
-    && apt-get remove -y \
+    && apt-get remove -y --purge \
         g++ \
         autoconf \
         libzip-dev \
         libmcrypt-dev \
         libaspell-dev \
         libpspell-dev \
-    && apt-get autoremove -y \
+    && apt-get autoremove -y --purge \
     && apt-get autoclean -y \
     && apt-get clean -y \
     && rm -rf /var/cache/debconf/*-old \
