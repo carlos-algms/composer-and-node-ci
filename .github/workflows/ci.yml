@@ -45,7 +45,7 @@ jobs:
         with:
           push: true
           build-args: |
-            FROM_IMAGE=php:7-cli-alpine
+            FROM_IMAGE=php:7-cli
           tags: carlosalgms/composer-and-node-ci:php7
 
 
@@ -67,7 +67,7 @@ jobs:
         with:
           push: true
           build-args: |
-            FROM_IMAGE=php:7.1-cli-alpine
+            FROM_IMAGE=php:7.1-cli
             DEPLOYER_VERSION="v6.6.0"
             PECL_EXT=""
             ENABLE_EXT=""
