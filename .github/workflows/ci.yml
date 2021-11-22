@@ -19,14 +19,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - run: docker pull carlosalgms/composer-and-node-ci:php8
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          pull: true
           push: true
-          cache-from: carlosalgms/composer-and-node-ci:php8
+          # cache-from: carlosalgms/composer-and-node-ci:php8
+          cache-to: type=inline
           tags: carlosalgms/composer-and-node-ci:latest,carlosalgms/composer-and-node-ci:php8
 
 
@@ -42,14 +42,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - run: docker pull carlosalgms/composer-and-node-ci:php7
-
       - name: Build 7 and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          pull: true
           push: true
-          cache-from: carlosalgms/composer-and-node-ci:php7
+          # cache-from: carlosalgms/composer-and-node-ci:php7
+          cache-to: type=inline
           build-args: |
             FROM_IMAGE=php:7-cli
           tags: carlosalgms/composer-and-node-ci:php7
@@ -67,14 +67,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - run: docker pull carlosalgms/composer-and-node-ci:php7.1
-
       - name: Build 7.1 and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          pull: true
           push: true
-          cache-from: carlosalgms/composer-and-node-ci:php7.1
+          # cache-from: carlosalgms/composer-and-node-ci:php7.1
+          cache-to: type=inline
           build-args: |
             FROM_IMAGE=php:7.1-cli
             DEPLOYER_VERSION=v6.6.0
