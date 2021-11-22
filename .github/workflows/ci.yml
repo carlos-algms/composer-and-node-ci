@@ -25,7 +25,7 @@ jobs:
         with:
           pull: true
           push: true
-          # cache-from: carlosalgms/composer-and-node-ci:php8
+          cache-from: carlosalgms/composer-and-node-ci:php8
           cache-to: type=inline
           tags: carlosalgms/composer-and-node-ci:latest,carlosalgms/composer-and-node-ci:php8
 
@@ -48,7 +48,7 @@ jobs:
         with:
           pull: true
           push: true
-          # cache-from: carlosalgms/composer-and-node-ci:php7
+          cache-from: carlosalgms/composer-and-node-ci:php7
           cache-to: type=inline
           build-args: |
             FROM_IMAGE=php:7-cli
@@ -73,7 +73,7 @@ jobs:
         with:
           pull: true
           push: true
-          # cache-from: carlosalgms/composer-and-node-ci:php7.1
+          cache-from: carlosalgms/composer-and-node-ci:php7.1
           cache-to: type=inline
           build-args: |
             FROM_IMAGE=php:7.1-cli
