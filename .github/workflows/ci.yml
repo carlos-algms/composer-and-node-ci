@@ -26,8 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          cache-from: |
-            carlosalgms/composer-and-node-ci:php8
+          cache-from: carlosalgms/composer-and-node-ci:php8
           tags: carlosalgms/composer-and-node-ci:latest,carlosalgms/composer-and-node-ci:php8
 
 
@@ -50,8 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          cache-from: |
-            carlosalgms/composer-and-node-ci:php7
+          cache-from: carlosalgms/composer-and-node-ci:php7
           build-args: |
             FROM_IMAGE=php:7-cli
           tags: carlosalgms/composer-and-node-ci:php7
@@ -76,11 +74,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          cache-from: |
-            carlosalgms/composer-and-node-ci:php7.1
+          cache-from: carlosalgms/composer-and-node-ci:php7.1
           build-args: |
             FROM_IMAGE=php:7.1-cli
-            DEPLOYER_VERSION="v6.6.0"
+            DEPLOYER_VERSION=v6.6.0
             PECL_EXT=
             ENABLE_EXT=
             PHP_EXT=mysqli pspell zip mcrypt
