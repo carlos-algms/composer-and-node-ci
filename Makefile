@@ -1,19 +1,18 @@
+IMAGE=carlosalgms/composer-and-node-ci
+TARGET=Dockerfile
 
 build_8:
-	docker build . --rm \
-		-t carlosalgms/composer-and-node-ci:latest \
-		-t carlosalgms/composer-and-node-ci:php8
+	docker pull $(IMAGE):php8 || true; \
+	docker buildx build --rm . \
+		-f $(TARGET) \
+		-t $(IMAGE):latest \
+		-t $(IMAGE):php8
 
-build_7:
-	docker build . --rm \
-		--build-arg=FROM_IMAGE="php:7-cli" \
-		-t carlosalgms/composer-and-node-ci:php7
 
 build_71:
-	docker build . --rm \
-		--build-arg=FROM_IMAGE="php:7.1-cli" \
+	docker buildx build --rm . \
+		-f $(TARGET) \
+		--build-arg=PHP_VERSION="7.1" \
 		--build-arg=DEPLOYER_VERSION="v6.6.0" \
-		--build-arg=PECL_EXT="" \
-		--build-arg=ENABLE_EXT="" \
-		--build-arg=PHP_EXT="mysqli pspell zip mcrypt" \
-		-t carlosalgms/composer-and-node-ci:php7.1 \
+		--build-arg=COMPOSER_VERSION="2.2.18" \
+		-t $(IMAGE):php7.1 \
