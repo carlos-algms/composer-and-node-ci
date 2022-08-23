@@ -1,10 +1,10 @@
-# composer-and-node-ci Docker image
+# Docker composer-and-node-ci image
 
 A docker image to be used on continuous integration projects. 
 
 The idea is to include everything you need to run unit tests and build frontend projects.
 
-Also, it is possible to run pure PHP or with frameworks like Laravel or CodeIgniter, Composer for dependency manager.
+Also, it is possible to run pure PHP scripts, Composer for dependency manager.
 
 To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync are available.
 
@@ -13,10 +13,10 @@ To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync a
 ## This image includes: 
 
 * [NodeJS 16.x and NPM](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
-* [yarn - latest](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
+* [Yarn - latest](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
 * PHP 8-cli, 7.1-cli
-* [Composer - latest](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md)
-* [Deployer](https://deployer.org) 
+* [Composer](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md) (latest or v2.2.18 for php7.1)
+* [Deployer](https://deployer.org) (v6.8.0 or v6.6.0 for php7.1)
 * OpenSSH client
 * Git
 * RSync
@@ -32,40 +32,52 @@ To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync a
 $ php -m
 
 [PHP Modules]
+calendar
 Core
 ctype
 curl
 date
 dom
+exif
+FFI
 fileinfo
 filter
 ftp
+gettext
 hash
 iconv
 json
 libxml
-mbstring
-mcrypt
 mysqli
 mysqlnd
 openssl
+pcntl
 pcre
 PDO
+pdo_mysql
 pdo_sqlite
 Phar
 posix
-pspell
+random
 readline
 Reflection
 session
+shmop
 SimpleXML
+sockets
+sodium
 SPL
 sqlite3
 standard
+sysvmsg
+sysvsem
+sysvshm
 tokenizer
 xml
 xmlreader
 xmlwriter
+xsl
+Zend OPcache
 zip
 zlib
 ```

@@ -1,19 +1,15 @@
 
 build_8:
-	docker build . --rm \
+	docker buildx build --rm . \
+		-f Dockerfile.ubuntu \
 		-t carlosalgms/composer-and-node-ci:latest \
-		-t carlosalgms/composer-and-node-ci:php8
+		-t carlosalgms/composer-and-node-ci:php8-jammy
 
-build_7:
-	docker build . --rm \
-		--build-arg=FROM_IMAGE="php:7-cli" \
-		-t carlosalgms/composer-and-node-ci:php7
 
 build_71:
-	docker build . --rm \
-		--build-arg=FROM_IMAGE="php:7.1-cli" \
+	docker buildx build --rm . \
+		-f Dockerfile.ubuntu \
+		--build-arg=PHP_VERSION="7.1" \
 		--build-arg=DEPLOYER_VERSION="v6.6.0" \
-		--build-arg=PECL_EXT="" \
-		--build-arg=ENABLE_EXT="" \
-		--build-arg=PHP_EXT="mysqli pspell zip mcrypt" \
-		-t carlosalgms/composer-and-node-ci:php7.1 \
+		--build-arg=COMPOSER_VERSION="2.2.18" \
+		-t carlosalgms/composer-and-node-ci:php7.1-jammy \
