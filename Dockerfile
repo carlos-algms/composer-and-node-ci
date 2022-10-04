@@ -73,10 +73,23 @@ RUN \
   && chmod +x /usr/local/bin/dep
 
 
+# https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
+ARG TARGETARCH
+
 # Install node, npm and yarn
-ARG NODE_VERSION="v16.17.0"
+ARG NODE_VERSION="v16.17.1"
 RUN \
-  curl -L "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" \
+  if [ "${TARGETARCH}" = "amd64" ]; then \
+    ARCHITECTURE=x64; \
+  elif [ "${TARGETARCH}" = "arm" ]; then \
+    ARCHITECTURE=armv7l; \
+  elif [ "${TARGETARCH}" = "arm64" ]; then \
+    ARCHITECTURE=arm64; \
+  else \
+    echo "Unknown TARGETARCH: '${TARGETARCH}'";\
+    exit 1; \
+  fi \
+  && curl -L "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-${ARCHITECTURE}.tar.xz" \
     --output node.tar.xz \
   && tar xJf node.tar.xz -C /usr --strip-components=1 --no-same-owner \
   && rm node.tar.xz \
