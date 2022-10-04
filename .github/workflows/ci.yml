@@ -30,7 +30,7 @@ jobs:
               COMPOSER_VERSION=2.2.18
     env:
       TAGGED_IMAGE: ${{ matrix.image }}:${{ matrix.tag }}
-      TAGS: ${{ matrix.tag == env.LATEST && format('{0}:latest,{1}', matrix.image, env.TAGGED_IMAGE) || env.TAGGED_IMAGE}}
+      TAGS: ${{ matrix.tag == env.LATEST && format('{0}:latest,{0}:{1}', matrix.image, matrix.tag) || format('{0}:{1}', matrix.image, matrix.tag) }}
     steps:
       - uses: actions/checkout@v2
 
