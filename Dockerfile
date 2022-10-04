@@ -3,9 +3,9 @@ FROM ubuntu:jammy
 LABEL maintainer="Carlos A. Gomes <carlos.algms@gmail.com>"
 
 RUN \
-  apt update \
-  && apt upgrade -y \
-  && apt install -y --no-install-recommends \
+  apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install -y --no-install-recommends \
     apt-transport-https \
     curl \
     default-mysql-client \
@@ -23,9 +23,9 @@ RUN \
     xz-utils \
     zip \
     zsh \
-  && apt autoremove -y --purge \
-  && apt autoclean -y \
-  && apt clean -y \
+  && apt-get autoremove -y --purge \
+  && apt-get autoclean -y \
+  && apt-get clean -y \
   && rm -rf /var/cache/debconf/*-old \
   && rm -rf /usr/share/doc/* \
   && rm -rf /var/lib/apt/lists/* \
@@ -35,7 +35,7 @@ RUN \
 ARG PHP_VERSION=8.2
 RUN \
   LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php \
-  && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     php-pear \
     php${PHP_VERSION}-cli \
     php${PHP_VERSION}-common \
@@ -45,9 +45,9 @@ RUN \
     php${PHP_VERSION}-sqlite3 \
     php${PHP_VERSION}-xml \
     php${PHP_VERSION}-zip \
-  && apt autoremove -y --purge \
-  && apt autoclean -y \
-  && apt clean -y \
+  && apt-get autoremove -y --purge \
+  && apt-get autoclean -y \
+  && apt-get clean -y \
   && rm -rf /var/cache/debconf/*-old \
   && rm -rf /usr/share/doc/* \
   && rm -rf /var/lib/apt/lists/* \
@@ -74,27 +74,39 @@ RUN \
 
 
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
-ARG TARGETARCH
+# ARG TARGETARCH
 
-# Install node, npm and yarn
-ARG NODE_VERSION="v16.17.1"
+# # Install node, npm and yarn
+# ARG NODE_VERSION="v16.17.1"
+# RUN \
+#   if [ "${TARGETARCH}" = "amd64" ]; then \
+#     ARCHITECTURE=x64; \
+#   elif [ "${TARGETARCH}" = "arm" ]; then \
+#     ARCHITECTURE=armv7l; \
+#   elif [ "${TARGETARCH}" = "arm64" ]; then \
+#     ARCHITECTURE=arm64; \
+#   else \
+#     echo "Unknown TARGETARCH: '${TARGETARCH}'";\
+#     exit 1; \
+#   fi \
+#   && curl -L "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-${ARCHITECTURE}.tar.xz" \
+#     --output node.tar.xz \
+#   && tar xJf node.tar.xz -C /usr --strip-components=1 --no-same-owner \
+#   && rm node.tar.xz \
+#   && npm i -g yarn
+
+# https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
 RUN \
-  if [ "${TARGETARCH}" = "amd64" ]; then \
-    ARCHITECTURE=x64; \
-  elif [ "${TARGETARCH}" = "arm" ]; then \
-    ARCHITECTURE=armv7l; \
-  elif [ "${TARGETARCH}" = "arm64" ]; then \
-    ARCHITECTURE=arm64; \
-  else \
-    echo "Unknown TARGETARCH: '${TARGETARCH}'";\
-    exit 1; \
-  fi \
-  && curl -L "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-${ARCHITECTURE}.tar.xz" \
-    --output node.tar.xz \
-  && tar xJf node.tar.xz -C /usr --strip-components=1 --no-same-owner \
-  && rm node.tar.xz \
-  && npm i -g yarn
-
+  curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+  && apt-get install -y nodejs \
+  && npm i -g yarn \
+  && apt-get autoremove -y --purge \
+  && apt-get autoclean -y \
+  && apt-get clean -y \
+  && rm -rf /var/cache/debconf/*-old \
+  && rm -rf /usr/share/doc/* \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /var/cache/apt/*
 
 COPY zshrc /root/.zshrc
 
