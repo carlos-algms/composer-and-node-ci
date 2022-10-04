@@ -6,19 +6,23 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  IMAGE: carlosalgms/composer-and-node-ci
+
 jobs:
   build_latest:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tag: [php8, php7.1]
-        image: [carlosalgms/composer-and-node-ci]
         include:
           - tag: php8
+            image: carlosalgms/composer-and-node-ci
             buildArgs: ""
             tags: ${{ matrix.image }}:latest,${{ matrix.image }}:${{ matrix.tag }}
 
           - tag: php7.1
+            image: carlosalgms/composer-and-node-ci
             buildArgs: |
               PHP_VERSION=7.1
               DEPLOYER_VERSION=v6.6.0
