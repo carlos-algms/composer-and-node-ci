@@ -6,12 +6,11 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  IMAGE: carlosalgms/composer-and-node-ci
-
 jobs:
   build_latest:
     runs-on: ubuntu-latest
+    env:
+      IMAGE: carlosalgms/composer-and-node-ci
     strategy:
       matrix:
         tag: [php8, php7.1]
