@@ -9,22 +9,21 @@ on:
 jobs:
   build_latest:
     runs-on: ubuntu-latest
-    env:
-      IMAGE: carlosalgms/composer-and-node-ci
     strategy:
       matrix:
         tag: [php8, php7.1]
+        image: [carlosalgms/composer-and-node-ci]
         include:
           - tag: php8
             buildArgs: ""
-            tags: ${{ env.IMAGE }}:latest,${{ env.IMAGE }}:${{ matrix.tag }}
+            tags: ${{ matrix.image }}:latest,${{ matrix.image }}:${{ matrix.tag }}
 
           - tag: php7.1
             buildArgs: |
               PHP_VERSION=7.1
               DEPLOYER_VERSION=v6.6.0
               COMPOSER_VERSION=2.2.18
-            tags: ${{ env.IMAGE }}:${{ matrix.tag }}
+            tags: ${{ matrix.image }}:${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v2
 
@@ -49,7 +48,7 @@ jobs:
           pull: true
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          cache-from: ${{ env.IMAGE }}:${{ matrix.tag }}
+          cache-from: ${{ matrix.image }}:${{ matrix.tag }}
           cache-to: type=inline
           build-args: ${{ matrix.buildArgs }}
           tags: ${{ matrix.tags }}
