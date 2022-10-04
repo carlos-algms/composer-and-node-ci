@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
 
 env:
+  LATEST: php8
   IMAGE: carlosalgms/composer-and-node-ci
 
 jobs:
@@ -15,19 +16,21 @@ jobs:
     strategy:
       matrix:
         tag: [php8, php7.1]
+        image: [carlosalgms/composer-and-node-ci]
         include:
           - tag: php8
-            image: carlosalgms/composer-and-node-ci
+
             buildArgs: ""
-            tags: ${{ matrix.image }}:latest,${{ matrix.image }}:${{ matrix.tag }}
+            # tags: ${{ matrix.image }}:latest,${{ matrix.image }}:${{ matrix.tag }}
 
           - tag: php7.1
-            image: carlosalgms/composer-and-node-ci
             buildArgs: |
               PHP_VERSION=7.1
               DEPLOYER_VERSION=v6.6.0
               COMPOSER_VERSION=2.2.18
-            tags: ${{ matrix.image }}:${{ matrix.tag }}
+    env:
+      TAGGED_IMAGE: ${{ matrix.image }}:${{ matrix.tag }}
+      TAGS: ${{ matrix.tag == env.LATEST && format('{0}:latest,{1}', matrix.image, env.TAGGED_IMAGE) || env.TAGGED_IMAGE}}
     steps:
       - uses: actions/checkout@v2
 
@@ -52,7 +55,7 @@ jobs:
           pull: true
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          cache-from: ${{ matrix.image }}:${{ matrix.tag }}
+          cache-from: ${{ env.TAGGED_IMAGE }}
           cache-to: type=inline
           build-args: ${{ matrix.buildArgs }}
-          tags: ${{ matrix.tags }}
+          tags: ${{ env.TAGS }}
