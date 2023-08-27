@@ -23,7 +23,7 @@ jobs:
             buildArgs: |
               PHP_VERSION=7.1
               DEPLOYER_VERSION=v6.6.0
-              COMPOSER_VERSION=2.2.18
+              COMPOSER_VERSION=2.2.21
     env:
       TAGGED_IMAGE: ${{ matrix.image }}:${{ matrix.tag }}
       TAGS: ${{ matrix.tag == matrix.latest && format('{0}:latest,', matrix.image) || '' }}${{ matrix.image }}:${{ matrix.tag }}

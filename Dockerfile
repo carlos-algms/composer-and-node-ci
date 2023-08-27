@@ -55,15 +55,11 @@ RUN \
 
 
 # https://getcomposer.org/download/
-ARG COMPOSER_VERSION="2.4.1"
-RUN \
-  curl -L "https://getcomposer.org/installer" --output "composer-setup.php" \
-  && php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
-  && php composer-setup.php \
-    --install-dir=/usr/local/bin \
-    --filename=composer \
-    --version=${COMPOSER_VERSION} \
-  && rm "composer-setup.php"
+# latest-stable will be replaced by a version number for PHP 7.1
+ARG COMPOSER_VERSION="latest-stable"
+ADD --chmod=755 \
+  https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar \
+  /usr/local/bin/composer
 
 
 ARG DEPLOYER_VERSION="v6.8.0"
