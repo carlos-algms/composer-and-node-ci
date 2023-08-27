@@ -97,7 +97,7 @@ RUN \
 
 # https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
 RUN \
-  curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs \
   && npm i -g yarn \
   && apt-get autoremove -y --purge \
