@@ -9,6 +9,12 @@ build_8:
 		-t $(IMAGE):latest \
 		-t $(IMAGE):php8
 
+build_74:
+	docker buildx build --rm . \
+		-f $(TARGET) \
+		--load \
+		--build-arg=PHP_VERSION="7.4" \
+		-t $(IMAGE):php7.4 \
 
 build_71:
 	docker buildx build --rm . \

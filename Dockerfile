@@ -62,7 +62,7 @@ ADD --chmod=755 \
   /usr/local/bin/composer
 
 
-ARG DEPLOYER_VERSION="v6.8.0"
+ARG DEPLOYER_VERSION="v6.9.0"
 RUN \
   curl -L "https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar" \
       --output /usr/local/bin/dep \
