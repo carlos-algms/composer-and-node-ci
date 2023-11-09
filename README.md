@@ -13,10 +13,10 @@ To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync a
 ## This image includes: 
 
 * [NodeJS 18.x and NPM](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
-* [Yarn - latest](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
+* [Yarn - classic](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
 * PHP 8-cli, 7.1-cli
-* [Composer](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md) (latest or v2.2.18 for php7.1)
-* [Deployer](https://deployer.org) (v6.8.0 or v6.6.0 for php7.1)
+* [Composer](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md) (latest or v2.2.x for php7.x)
+* [Deployer](https://deployer.org) (v6.9.0 or v6.6.0 for php7.x)
 * OpenSSH client
 * Git
 * RSync

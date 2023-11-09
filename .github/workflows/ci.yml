@@ -16,12 +16,13 @@ jobs:
         latest: [php8]
         include:
           - tag: php8
-
             buildArgs: ""
 
           - tag: php7.4
             buildArgs: |
               PHP_VERSION=7.4
+              DEPLOYER_VERSION=v6.6.0
+              COMPOSER_VERSION=2.2.21
 
           - tag: php7.1
             buildArgs: |

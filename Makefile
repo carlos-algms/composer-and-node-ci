@@ -14,6 +14,8 @@ build_74:
 		-f $(TARGET) \
 		--load \
 		--build-arg=PHP_VERSION="7.4" \
+		--build-arg=DEPLOYER_VERSION="v6.6.0" \
+		--build-arg=COMPOSER_VERSION="latest-2.2.x" \
 		-t $(IMAGE):php7.4 \
 
 build_71:
@@ -22,5 +24,5 @@ build_71:
 		--load \
 		--build-arg=PHP_VERSION="7.1" \
 		--build-arg=DEPLOYER_VERSION="v6.6.0" \
-		--build-arg=COMPOSER_VERSION="2.2.18" \
+		--build-arg=COMPOSER_VERSION="latest-2.2.x" \
 		-t $(IMAGE):php7.1 \
