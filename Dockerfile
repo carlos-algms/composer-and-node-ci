@@ -109,10 +109,9 @@ ADD --chmod=755 \
 
 
 ARG DEPLOYER_VERSION="v6.9.0"
-RUN \
-  curl -L "https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar" \
-      --output /usr/local/bin/dep \
-  && chmod +x /usr/local/bin/dep
+ADD --chmod=755 \
+  https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar \
+  /usr/local/bin/dep
 
 COPY zshrc /root/.zshrc
 
