@@ -4,7 +4,7 @@ TARGET=Dockerfile
 build_8:
 	docker pull $(IMAGE):php8 || true; \
 	docker buildx build --rm . \
-		--load
+		--load \
 		-f $(TARGET) \
 		-t $(IMAGE):latest \
 		-t $(IMAGE):php8
