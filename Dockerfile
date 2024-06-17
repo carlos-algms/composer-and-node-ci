@@ -65,11 +65,11 @@ ADD --chmod=755 \
   /usr/local/bin/composer
 
 
-ARG DEPLOYER_VERSION="v6.9.0"
-RUN \
-  curl -L "https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar" \
-      --output /usr/local/bin/dep \
-  && chmod +x /usr/local/bin/dep
+# ARG DEPLOYER_VERSION="v6.9.0"
+# RUN \
+#   curl -L "https://deployer.org/releases/${DEPLOYER_VERSION}/deployer.phar" \
+#       --output /usr/local/bin/dep \
+#   && chmod +x /usr/local/bin/dep
 
 
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
@@ -103,7 +103,7 @@ RUN \
     | tee /etc/apt/sources.list.d/nodesource.list \
   && apt-get update \
   && apt-get install -y nodejs \
-  && npm i -g yarn pnpm \
+  && npm i -g yarn pnpm@8 \
   && apt-get autoremove -y --purge \
   && apt-get autoclean -y \
   && apt-get clean -y \
