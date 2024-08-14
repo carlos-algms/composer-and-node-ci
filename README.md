@@ -14,7 +14,7 @@ To deploy and transfer files, [Deployer](https://deployer.org), SSH, and RSync a
 
 - [NodeJS 20.x and NPM](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
 - [Yarn - classic](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
-- [Pnpm 8.x](https://pnpm.io/installation)
+- [Pnpm 9.x](https://pnpm.io/installation)
 - PHP 8-cli, 7.1-cli
 - [Composer](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md) (latest or v2.2.x for php7.x)
 - [Deployer](https://deployer.org) (v6.9.0 or v6.6.0 for php7.x)
