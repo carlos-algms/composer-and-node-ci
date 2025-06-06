@@ -99,7 +99,7 @@ RUN \
 
 
 RUN corepack enable
-RUN npm i -g yarn pnpm@10
+RUN npm i -g --force yarn pnpm@10
 
 # https://getcomposer.org/download/
 # latest-stable will be replaced by a version number for PHP 7.1
