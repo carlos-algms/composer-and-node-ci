@@ -6,25 +6,25 @@ RUN \
   apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y --no-install-recommends \
-    apt-transport-https \
-    ca-certificates \
-    gnupg \
-    curl \
-    default-mysql-client \
-    dirmngr \
-    git \
-    gpg \
-    gpg-agent \
-    make \
-    openssh-client \
-    rsync \
-    software-properties-common \
-    tini \
-    unzip \
-    vim \
-    xz-utils \
-    zip \
-    zsh \
+  apt-transport-https \
+  ca-certificates \
+  gnupg \
+  curl \
+  default-mysql-client \
+  dirmngr \
+  git \
+  gpg \
+  gpg-agent \
+  make \
+  openssh-client \
+  rsync \
+  software-properties-common \
+  tini \
+  unzip \
+  vim \
+  xz-utils \
+  zip \
+  zsh \
   && apt-get autoremove -y --purge \
   && apt-get autoclean -y \
   && apt-get clean -y \
@@ -60,9 +60,9 @@ RUN \
 RUN \
   mkdir -p /etc/apt/keyrings \
   && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
-    | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+  | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
   && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" \
-    | tee /etc/apt/sources.list.d/nodesource.list \
+  | tee /etc/apt/sources.list.d/nodesource.list \
   && apt-get update \
   && apt-get install -y nodejs \
   && apt-get autoremove -y --purge \
@@ -78,16 +78,16 @@ ARG PHP_VERSION=8.2
 RUN \
   LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    php-pear \
-    php${PHP_VERSION}-bcmath \
-    php${PHP_VERSION}-cli \
-    php${PHP_VERSION}-common \
-    php${PHP_VERSION}-curl \
-    php${PHP_VERSION}-mbstring \
-    php${PHP_VERSION}-mysql \
-    php${PHP_VERSION}-sqlite3 \
-    php${PHP_VERSION}-xml \
-    php${PHP_VERSION}-zip \
+  php-pear \
+  php${PHP_VERSION}-bcmath \
+  php${PHP_VERSION}-cli \
+  php${PHP_VERSION}-common \
+  php${PHP_VERSION}-curl \
+  php${PHP_VERSION}-mbstring \
+  php${PHP_VERSION}-mysql \
+  php${PHP_VERSION}-sqlite3 \
+  php${PHP_VERSION}-xml \
+  php${PHP_VERSION}-zip \
   && apt-get autoremove -y --purge \
   && apt-get autoclean -y \
   && apt-get clean -y \
@@ -98,8 +98,8 @@ RUN \
 
 
 
-RUN npm i -g yarn pnpm@9
 RUN corepack enable
+RUN npm i -g yarn pnpm@10
 
 # https://getcomposer.org/download/
 # latest-stable will be replaced by a version number for PHP 7.1
